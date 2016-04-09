@@ -25,8 +25,7 @@ class Player
     else  
       STDERR.puts "POSTFLOP"
       STDERR.puts get_rainman(game_state)
-      10000
-      #calculate_bet(game_state)
+      calculate_bet(game_state)
     end
 
   end
@@ -127,7 +126,7 @@ class Player
   end
 
   def raise_bet(gs, num)
-    puts minbet(gs) * num
+    minbet(gs) * num
   end
 
   def minbet(gs)
@@ -136,7 +135,7 @@ class Player
 
   def calculate_bet(gs)
     rainman = JSON.parse(get_rainman(gs))
-    puts rainman['rank']
+    STDERR.puts "RAINMAN: #{rainman['rank']}"
     case rainman['rank']
       when 2
         raise_bet(gs, 1)
