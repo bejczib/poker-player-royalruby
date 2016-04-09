@@ -7,15 +7,15 @@ set :port, 8090
 set :bind, '0.0.0.0'
 
 post "/" do
-  puts "LOGLOGLOGLOG SIMA"
-  STDERR.puts 'LOGLOGLOGLOG ERR'
   if params[:action] == 'bet_request'
     begin
-      Player.new.bet_request(JSON.parse(params[:game_state])).to_s
+      result = Player.new.bet_request(JSON.parse(params[:game_state])).to_s
+      STDERR.puts "Bet request result: #{result}"
+      result
     rescue Exception => e
-      puts "======== ERRROR ======="
-      puts e.inspect
-      puts e.backtrace
+      STDERR.puts "======== ERRROR ======="
+      STDERR.puts e.inspect
+      STDERR.puts e.backtrace
     ensure
       10000
     end
