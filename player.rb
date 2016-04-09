@@ -12,14 +12,18 @@ class Player
 
     if preflop(game_state)
       STDERR.puts "PREFLOP"
-      rank = strtinghand_strength(game_state)
-      # LOGIC
-      if rank <= 4
-        0
-      elsif rank < 8
-        game_state['current_buy_in'] - game_state['players'][0]['bet']
+      if (game_state['in_action'] == game_state['dealer']) && (game_state['pot'] == game_state['small_blind'] * 3)
+        return 10000
       else
-        10000
+        rank = strtinghand_strength(game_state)
+        # LOGIC
+        if rank <= 4
+          0
+        elsif rank < 8
+          game_state['current_buy_in'] - game_state['players'][0]['bet']
+        else
+          10000
+        end
       end
 
     else  
