@@ -9,7 +9,7 @@ class Player
     STDERR.puts "bejottunk a bet_request-be"
     STDERR.puts game_state
     STDERR.puts "========================="
-    STDERR.puts game_state['players']
+    STDERR.puts game_state['players'][0]['hole_cards'][0]['rank']
 
     # our_rank = card_converter(game_state)[0] + card_converter(game_state)[1]
     0
