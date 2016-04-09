@@ -7,12 +7,14 @@ def high_cards(gs)
 end
 
 def card_converter(gs)
+  STDERR.puts "bejottunk a card_converter-be"
   gs1 = convert_card(gs, 0)
   gs2 = convert_card(gs, 1)
   [gs1, gs2]
 end
 
 def convert_card(gs, nr)
+  STDERR.puts "bejottunk a convert_card-ba"
   in_action = gs[:in_action]
   if gs[:players][in_action][:hole_cards][nr][:rank] == "J"
     11
