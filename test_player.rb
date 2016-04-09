@@ -144,10 +144,10 @@ class TestPlayer < MiniTest::Test
 		assert_equal player.bet_request(@gs2), 0
 	end
 
-	# def test_pair?
-	# 	assert_equal pair?(@gs), false
-	# 	assert_equal pair?(@gs2), true
-	# end
+	def test_pair?
+		assert_equal pair?(@gs), false
+		assert_equal pair?(@gs2), true
+	end
 
 
 end
