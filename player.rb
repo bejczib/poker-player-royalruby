@@ -129,8 +129,8 @@ class Player
     minbet(gs) * num
   end
 
-  def minbet(gs)
-    gs['minimum_raise']
+  def minbet(game_state)
+    game_state['current_buy_in'] - game_state['players'][0]['bet'] + game_state['minimum_raise']
   end
 
   def calculate_bet(gs)
