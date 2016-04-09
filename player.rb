@@ -6,7 +6,7 @@ class Player
   VERSION = "Default Ruby folding player"
 
   def bet_request(game_state)
-  	puts card_converter(game_state)
+  	STDERR.puts card_converter(game_state)
   	10000
 
     # our_rank = card_converter(game_state)[0] + card_converter(game_state)[1]
