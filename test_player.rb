@@ -213,6 +213,9 @@ class TestPlayer < MiniTest::Test
 		assert_equal convert_card(@gs2, 1), 6
 	end
 
+	def test_card_converter
+		assert_equal card_converter(@gs), [6, 13]
+	end
 
 end
 
