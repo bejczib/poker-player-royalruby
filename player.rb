@@ -1,4 +1,6 @@
 require_relative 'log'
+require 'net/http'
+require 'json'
 
 class Player
 
@@ -6,17 +8,29 @@ class Player
 
   def bet_request(game_state)
     STDERR.puts "bejottunk a bet_request-be"
-    STDERR.puts game_state
     STDERR.puts "========================="
 
-    rank = strtinghand_strength(game_state)
+    if preflop(game_state)
+      STDERR.puts "PREFLOP"
+      rank = strtinghand_strength(game_state)
+      # LOGIC
+      if rank <= 4
+        0
+      elsif rank < 8
+        game_state['current_buy_in'] - game_state['players'][0]['bet']
+      else
+        10000
+      end
 
-    if rank < 8
-      0
-    else
-      10000
+    else  
+      STDERR.puts "POSTFLOP"
+      calculate_bet(game_state)
     end
 
+  end
+
+  def preflop(game_state)
+    game_state['community_cards'].empty?
   end
 
   def cards_in_hand(game_state)
@@ -92,6 +106,55 @@ class Player
       end
     end
   end
+
+
+
+  def get_rainman(gs)
+    cards = cards(gs)
+    uri = URI('http://rainman.leanpoker.org/rank')
+    params = {
+          cards: "#{cards}".gsub!("=>",":")
+    }
+    uri.query = URI.encode_www_form(params)
+    res = Net::HTTP.get_response(uri)
+    res.body
+  end
+
+  def cards(gs)
+    gs['players'][gs['in_action']]['hole_cards'].push(gs['community_cards']).flatten!
+  end
+
+  def raise_bet(gs, num)
+    puts minbet(gs) * num
+  end
+
+  def minbet(gs)
+    gs['minimum_raise']
+  end
+
+  def calculate_bet(gs)
+    rainman = JSON.parse(get_rainman(gs))
+    puts rainman['rank']
+    case rainman['rank']
+      when 2
+        raise_bet(gs, 1)
+      when 3
+        raise_bet(gs, 2)
+      when 4
+        raise_bet(gs, 3)
+      when 5
+        raise_bet(gs, 4)
+      when 6
+       raise_bet(gs, 5)
+      when 7
+       raise_bet(gs, 6)
+      when 8
+        raise_bet(gs, 7)
+      else
+        raise_bet(gs, 0)
+    end
+  end
+
 
   def showdown(game_state)
 

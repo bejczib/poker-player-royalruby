@@ -16,7 +16,7 @@ class TestPlayer < MiniTest::Test
     "minimum_raise": 240,                          
     "dealer": 1,                                    
     "orbits": 7,                                   
-    "in_action": 1,                                 
+    "in_action": 0,                                 
     "players": [ 
     		{                                 
             "id": 0,                               
@@ -24,15 +24,7 @@ class TestPlayer < MiniTest::Test
             "status": "active",                    
             "version": "Default random player",     
             "stack": 1010,                         
-            "bet": 320                           
-        },
-        {
-            "id": 1,                            
-            "name": "Bob",
-            "status": "active",
-            "version": "Default random player",
-            "stack": 1590,
-            "bet": 80,
+            "bet": 320,
             "hole_cards": [                       
                 {
                     "rank": "6",             
@@ -42,7 +34,15 @@ class TestPlayer < MiniTest::Test
                     "rank": "K",
                     "suit": "spades"
                 }
-            ]
+            ]                        
+        },
+        {
+            "id": 1,                            
+            "name": "Bob",
+            "status": "active",
+            "version": "Default random player",
+            "stack": 1590,
+            "bet": 80
         },
         {
             "id": 2,
@@ -191,6 +191,11 @@ class TestPlayer < MiniTest::Test
 	def test_integer?
 		player = Player.new
 		assert_equal true, player.bet_request(JSON.parse(@gs)).is_a?(Integer)
+    end
+
+    def test_preflop
+        player = Player.new
+        assert_equal false, player.preflop(JSON.parse(@gs))
     end
 
 	# def test_rank_15
