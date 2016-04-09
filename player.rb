@@ -10,22 +10,32 @@ class Player
     STDERR.puts "bejottunk a bet_request-be"
     STDERR.puts "========================="
 
-    if preflop(game_state)
-      STDERR.puts "PREFLOP"
-      rank = strtinghand_strength(game_state)
+    rank = strtinghand_strength(game_state)
       # LOGIC
-      if rank <= 4
+      if rank < 8
         0
-      elsif rank < 8
-        game_state['current_buy_in'] - game_state['players'][0]['bet']
       else
         10000
       end
 
-    else  
-      STDERR.puts "POSTFLOP"
-      calculate_bet(game_state)
-    end
+
+
+    # if preflop(game_state)
+    #   STDERR.puts "PREFLOP"
+    #   rank = strtinghand_strength(game_state)
+    #   # LOGIC
+    #   if rank <= 4
+    #     0
+    #   elsif rank < 8
+    #     game_state['current_buy_in'] - game_state['players'][0]['bet']
+    #   else
+    #     10000
+    #   end
+
+    # else  
+    #   STDERR.puts "POSTFLOP"
+    #   calculate_bet(game_state)
+    # end
 
   end
 
