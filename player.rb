@@ -8,7 +8,7 @@ class Player
     STDERR.puts "bejottunk a bet_request-be"
     STDERR.puts game_state
     STDERR.puts "========================="
-    
+
     rank = strtinghand_strength(game_state)
 
     if rank < 8
@@ -16,13 +16,11 @@ class Player
     else
       10000
     end
+
   end
-
-
 
   def cards_in_hand(game_state)
     STDERR.puts "cards_in_hand-ben vagyunk"
-    
     if game_state['players'][0]['hole_cards'][0]['rank'] == "J"
       card1 = 11
     elsif game_state['players'][0]['hole_cards'][0]['rank'] == "Q"
@@ -31,7 +29,7 @@ class Player
       card1 = 13
     elsif game_state['players'][0]['hole_cards'][0]['rank'] == "A"
       card1 = 14
-    else 
+    else
       card1 = game_state['players'][0]['hole_cards'][0]['rank'].to_i
     end
 
@@ -43,7 +41,7 @@ class Player
       card2 = 13
     elsif game_state['players'][0]['hole_cards'][1]['rank'] == "A"
       card2 = 14
-    else 
+    else
       card2 = game_state['players'][0]['hole_cards'][1]['rank'].to_i
     end
     [card1, card2].sort
@@ -61,6 +59,14 @@ class Player
         8
       elsif sorted_hand == [10, 13] || sorted_hand == [10, 12] || sorted_hand == [9, 11] || sorted_hand == [9, 10] ||sorted_hand == [8, 9]
         7
+      elsif sorted_hand == [9, 14] || sorted_hand == [8, 14] || sorted_hand == [7, 14] || sorted_hand == [6, 14] || sorted_hand == [7, 14] || sorted_hand == [6, 14] || sorted_hand == [5, 14] || sorted_hand == [4, 14] || sorted_hand == [3, 14] || sorted_hand == [2, 14] || sorted_hand == [9, 12] || sorted_hand == [8, 10] || sorted_hand == [7, 9] || sorted_hand == [7, 8] || sorted_hand == [6, 7]
+        6
+      elsif sorted_hand == [9, 13] || sorted_hand == [8, 11] || sorted_hand == [6, 8] || sorted_hand == [5, 7] || sorted_hand == [4, 5]
+        5
+      elsif sorted_hand == [8, 13] || sorted_hand == [7, 13] || sorted_hand == [6, 13] || sorted_hand == [5, 13] || sorted_hand == [4, 13] || sorted_hand == [3, 13] || sorted_hand == [2, 13] || sorted_hand == [8, 12] || sorted_hand == [7, 10] || sorted_hand == [4, 6] || sorted_hand == [3, 5] || sorted_hand == [3, 4]
+        4
+      elsif sorted_hand == [7, 11] || sorted_hand == [6, 9] || sorted_hand == [5, 8] || sorted_hand == [4, 7] || sorted_hand == [2, 4] || sorted_hand == [2, 3]
+        3
       else
         2
       end
@@ -73,6 +79,14 @@ class Player
         8
       elsif sorted_hand == [8, 8] || sorted_hand == [11, 14] || sorted_hand == [12, 13]
         7
+      elsif sorted_hand == [7, 7] || sorted_hand == [11, 13] || sorted_hand == [11, 12] || sorted_hand == [10, 12]
+        6
+      elsif sorted_hand == [6, 6] || sorted_hand == [5, 5] || sorted_hand == [10, 14] || sorted_hand == [10, 13] || sorted_hand == [10, 12]
+        5
+      elsif sorted_hand == [4, 4] || sorted_hand == [3, 3] ||sorted_hand == [2, 2]
+        4
+      elsif sorted_hand == [9, 14] || sorted_hand == [9, 13] || sorted_hand == [9, 12] || sorted_hand == [8, 11] || sorted_hand == [8, 10] || sorted_hand == [7, 8] || sorted_hand == [6, 7] || sorted_hand == [5, 6] || sorted_hand == [4, 5]
+        3
       else
         2
       end
@@ -83,5 +97,3 @@ class Player
 
   end
 end
-
-
