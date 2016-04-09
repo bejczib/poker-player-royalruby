@@ -6,6 +6,7 @@ class Player
   VERSION = "Default Ruby folding player"
 
   def bet_request(game_state)
+    STDERR.puts "bejottunk a bet_request-be"
     our_rank = card_converter(game_state)[0] + card_converter(game_state)[1]
     0
     # if our_rank > 15
