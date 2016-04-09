@@ -5,7 +5,7 @@ require_relative 'services'
 
 class TestPlayer < MiniTest::Test
 	def setup
-		@gs = JSON.parse('{
+		@gs = '{
     "tournament_id":"550d1d68cd7bd10003000003",
     "game_id":"550da1cb2d909006e90004b1",       
     "round":0,                                  
@@ -67,9 +67,9 @@ class TestPlayer < MiniTest::Test
             "suit": "clubs"
         }
     ]
-}')
+}'
 
-@gs2 = JSON.parse('{
+@gs2 = '{
     "tournament_id":"550d1d68cd7bd10003000003",
     "game_id":"550da1cb2d909006e90004b1",       
     "round":0,                                  
@@ -131,9 +131,9 @@ class TestPlayer < MiniTest::Test
             "suit": "clubs"
         }
     ]
-}')
+}'
 
-@gs3 = {
+@gs3 = '{
     "tournament_id":"550d1d68cd7bd10003000003",
     "game_id":"550da1cb2d909006e90004b1",       
     "round":0,                                  
@@ -186,12 +186,12 @@ class TestPlayer < MiniTest::Test
             "suit": "clubs"
         }
     ]
-}
+}'
 	end
 	def test_integer?
 		player = Player.new
-		assert_equal player.bet_request(@gs).is_a?(Integer), true
-	end
+		assert_equal true, player.bet_request(JSON.parse(@gs)).is_a?(Integer)
+    end
 
 	# def test_rank_15
 	# 	player = Player.new

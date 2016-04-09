@@ -16,11 +16,13 @@ class Player
     else
       10000
     end
-      
   end
+
+
 
   def cards_in_hand(game_state)
     STDERR.puts "cards_in_hand-ben vagyunk"
+    
     if game_state['players'][0]['hole_cards'][0]['rank'] == "J"
       card1 = 11
     elsif game_state['players'][0]['hole_cards'][0]['rank'] == "Q"
