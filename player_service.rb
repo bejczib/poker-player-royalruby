@@ -8,7 +8,15 @@ set :bind, '0.0.0.0'
 
 post "/" do
   if params[:action] == 'bet_request'
-    Player.new.bet_request(JSON.parse(params[:game_state])).to_s
+    begin
+      Player.new.bet_request(JSON.parse(params[:game_state])).to_s
+    rescue Exception => e
+      puts "======== ERRROR ======="
+      puts e.inspect
+      puts e.backtrace
+    ensure
+      10000
+    end
   elsif params[:action] == 'showdown'
     Player.new.showdown(JSON.parse(params[:game_state]))
     'OK'
