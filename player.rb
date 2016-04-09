@@ -10,16 +10,17 @@ class Player
     STDERR.puts game_state
     STDERR.puts "========================="
     STDERR.puts game_state['players'][0]['hole_cards'][0]['rank']
-
-    our_rank = card_converter(game_state)[0] + card_converter(game_state)[1]
+    STDERR.puts game_state['players'][1]['hole_cards'][0]['rank']
+    0
+    # our_rank = card_converter(game_state)[0] + card_converter(game_state)[1]
     
-    if our_rank > 15
-    	puts "high"
-    	10000
-    else
-    	puts "low"
-    	0
-    end
+    # if our_rank > 15
+    # 	puts "high"
+    # 	10000
+    # else
+    # 	puts "low"
+    # 	0
+    # end
   end
 
   def showdown(game_state)
