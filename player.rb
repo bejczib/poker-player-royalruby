@@ -14,7 +14,7 @@ class Player
       STDERR.puts "PREFLOP"
       if (game_state['in_action'] == game_state['dealer']) && (game_state['pot'] == game_state['small_blind'] * 3)
         STDERR.puts "DEALER"
-        return 10000
+        return game_state['pot'] * 2
       else
         rank = strtinghand_strength(game_state)
         # LOGIC
