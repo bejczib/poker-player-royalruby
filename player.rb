@@ -10,7 +10,7 @@ class Player
     STDERR.puts game_state
     STDERR.puts "========================="
     STDERR.puts game_state['players'][0]['hole_cards'][0]['rank']
-    STDERR.puts game_state['players'][1]['hole_cards'][0]['rank']
+    STDERR.puts game_state['players'][0]['hole_cards'][1]['rank']
     0
     # our_rank = card_converter(game_state)[0] + card_converter(game_state)[1]
     
