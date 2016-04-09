@@ -24,7 +24,6 @@ class Player
 
     else  
       STDERR.puts "POSTFLOP"
-      STDERR.puts get_rainman(game_state)
       calculate_bet(game_state)
     end
 
