@@ -5,7 +5,7 @@ require_relative 'services'
 
 class TestPlayer < MiniTest::Test
 	def setup
-		@gs = {
+		@gs = JSON.parse{
     "tournament_id":"550d1d68cd7bd10003000003",
     "game_id":"550da1cb2d909006e90004b1",       
     "round":0,                                  
