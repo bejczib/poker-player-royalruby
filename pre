@@ -1,0 +1,28 @@
+def strtinghand_strength(gs)
+  sorted_hand = card_converter(gs)
+  if gs[:players][in_action][:hole_cards][0][:suit] == gs[:players][in_action][:hole_cards][1][:suit] #suit
+    if sorted_hand == [13, 14]
+      10
+    elsif sorted_hand == [12, 14] || sorted_hand == [11, 14] || sorted_hand == [12, 13]
+      9
+    elsif sorted_hand == [10, 14] || sorted_hand == [11, 13] || sorted_hand == [11, 12] || sorted_hand == [10, 11]
+      8
+    elsif sorted_hand == [10, 13] || sorted_hand == [10, 12] || sorted_hand == [9, 11] || sorted_hand == [9, 10] ||sorted_hand == [8, 9]
+      7
+    else
+      2
+    end
+  else #offsuit
+    if sorted_hand == [14, 14] || sorted_hand == [13, 13] || sorted_hand == [12, 12] || sorted_hand == [11, 11]
+      10
+    elsif sorted_hand == [10, 10] || sorted_hand == [13, 14]
+      9
+    elsif sorted_hand == [9, 9] || sorted_hand == [12, 14]
+      8
+    elsif sorted_hand == [8, 8] || sorted_hand == [11, 14] || sorted_hand == [12, 13]
+      7
+    else
+      2
+    end
+  end
+end
